@@ -1,2 +1,1 @@
-bot: python printing_bot.py
-web: python web_dashboard.py
+web: python main.py
