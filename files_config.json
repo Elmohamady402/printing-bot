@@ -1,0 +1,52 @@
+{
+  "respiratory_system": {
+    "name": "Respiratory System",
+    "pages": 10,
+    "price": 5.0
+  },
+  "cardiovascular_system": {
+    "name": "Cardiovascular System",
+    "pages": 15,
+    "price": 7.5
+  },
+  "nervous_system": {
+    "name": "Nervous System",
+    "pages": 20,
+    "price": 10.0
+  },
+  "digestive_system": {
+    "name": "Digestive System",
+    "pages": 12,
+    "price": 6.0
+  },
+  "urinary_system": {
+    "name": "Urinary System",
+    "pages": 8,
+    "price": 4.0
+  },
+  "skeletal_system": {
+    "name": "Skeletal System",
+    "pages": 18,
+    "price": 9.0
+  },
+  "muscular_system": {
+    "name": "Muscular System",
+    "pages": 16,
+    "price": 8.0
+  },
+  "endocrine_system": {
+    "name": "Endocrine System",
+    "pages": 14,
+    "price": 7.0
+  },
+  "lymphatic_system": {
+    "name": "Lymphatic System",
+    "pages": 10,
+    "price": 5.0
+  },
+  "reproductive_system": {
+    "name": "Reproductive System",
+    "pages": 12,
+    "price": 6.0
+  }
+}

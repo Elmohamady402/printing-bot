@@ -1,3 +1,17 @@
+"""
+🤖 بوت تليجرام للمكتبة - نظام طباعة للطلاب
+
+المميزات:
+- عرض الملفات المتاحة من files_config.json
+- نظام رصيد للطلاب
+- شحن رصيد عبر فودافون كاش
+- أرقام طلبات للاستلام
+- حفظ البيانات تلقائياً
+
+📝 لإضافة ملفات جديدة:
+   عدّل ملف files_config.json وأعد تشغيل البوت
+"""
+
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes, ConversationHandler
@@ -24,23 +38,37 @@ WAITING_FOR_RECEIPT = 1
 
 # قاعدة البيانات (ملف JSON بسيط)
 DATA_FILE = "bot_data.json"
+FILES_CONFIG = "files_config.json"
+
+def load_files_config():
+    """تحميل تكوين الملفات"""
+    if os.path.exists(FILES_CONFIG):
+        with open(FILES_CONFIG, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    # ملفات افتراضية لو الملف مش موجود
+    return {
+        "respiratory_system": {
+            "name": "Respiratory System",
+            "pages": 10,
+            "price": 5.0
+        }
+    }
 
 def load_data():
     """تحميل البيانات من الملف"""
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return {
-        "users": {},
-        "files": {
-            "respiratory_system": {
-                "name": "Respiratory System",
-                "pages": 10,
-                "price": 5.0
-            }
-        },
-        "orders": []
-    }
+            data = json.load(f)
+    else:
+        data = {
+            "users": {},
+            "files": {},
+            "orders": []
+        }
+    
+    # تحميل الملفات من files_config.json
+    data["files"] = load_files_config()
+    return data
 
 def save_data(data):
     """حفظ البيانات في الملف"""
