@@ -1,0 +1,1 @@
+worker: python printing_bot.py
